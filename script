@@ -1,0 +1,25 @@
+<script>
+(function() {
+    // Define the schema data. Replace restaurant with relevant schema type
+    var restaurantSchemas = {
+        "/hotels/the-westbury-hotel/dining/wilde-westbury": {  //replace with correct page path
+//copy and paste the schema from the "@context" to end at the final closing curly bracket
+        // Add more schemas here...
+    };
+
+var pagePath = window.location.pathname.toLowerCase();
+
+console.log('Page Path:', pagePath);
+console.log('Schema Found:', restaurantSchemas[pagePath]); //ensure schema type here matches the opening var statement
+
+if (restaurantSchemas[pagePath]) { //ensure schema type here matches the opening var statement
+    var scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(restaurantSchemas[pagePath]); //ensure schema type here matches the opening var statement
+    document.head.appendChild(scriptTag);
+    console.log('Schema Injected');
+} else {
+    console.error('No Schema Found for this Page Path');
+}
+})();
+</script>
